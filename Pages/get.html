@@ -2,36 +2,37 @@
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8"/>
-        <title>Lista de herois</title>
+        <title>Lista de jogos</title>
         <link rel="stylesheet" href="../css/get.css"/>
         <script src="../js/get.js" defer></script>
     </head>
     <body>
-        <header>
-        <h1>Lista de herois</h1>
-        <p>Veja a baixo a lista de heróis</p>
-        </header>
+          <header>
+        <h1>Lista de jogos</h1>
+        <p>Veja a baixo a lista de jogos</p>
+        </header>            
         <main>
             <P><a href="../index.html">Voltar para o cadastro</a></P>
             <section id="container-titulo-lista">
-                <h2 id="titulo-lista">Heróis cadastrados</h2>
-                <p>Os heróis são exibidos automaticamente após abrir a página</p>
+                <h2 id="titulo-lista">jogos cadastrados</h2>
+                <p>Os jogos são exibidos automaticamente após abrir a página</p>
                 <P id="resposta"></P>
-                <ul id="lista-herois"></ul>
+                <ul id="lista-jogos"></ul>
             </section>
         </main>
 
-        <template id="modelo-heroi">
-            <li>
-                <Section class="capa">
-                    <span class="sem-imagem"> Imagem indisponivel</span>
-                    <img alt=""/>
-                </Section>
+         <template id="modelo-jogo">
+      <li>
+        <section class="card-capa">
+          <img class="imagem-jogo" alt="" />
+        </section>
                 <Section class="card-conteudo">
                 <h3 class="nome"></h3>
-                <p><strong>Poder:</strong><span class="poder"></span></p>
-                <p><strong>Universo:</strong><span class="universo"></span></p>
-                <p><strong>Fraqueza:</strong><span class="fraqueza"></span></p>
+                <p><strong>Gênero:</strong><span class="genero"></span></p>
+                <p><strong>Plataforma:</strong><span class="plataforma"></span></p>
+                <p><strong>Ano-lancamento:</strong><span class="ano-lancamento"></span></p>
+                <p><strong>Desenvolvedora:</strong><span class="desenvolvedora"></span></p>
+
                 </Section>
             </li>
         </template>

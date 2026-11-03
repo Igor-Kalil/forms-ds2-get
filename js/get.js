@@ -1,16 +1,16 @@
-const resposta = document.querySelector("Resposta");
-const lista = document.querySelector ("#lista-herois");
-const modelo = document.querySelector ("#modelo-heroi");
+const resposta = document.querySelector("#resposta");
+const lista = document.querySelector ("#lista-jogos");
+const modelo = document.querySelector ("#modelo-jogo");
 
 
-const apiKey = "cv_211VVnuYxDpF1AAU6Xb6RSShPDUiM_W5ENadCm1UAEASUgG5Q";
+const apiKey = "cv_211VVnuYxDpF1AAU6Xb6RSShPDUiM_W5ENadCm1UAEASUgG5Q-F1tN1Bv30afSqH";
 
 const apiUrl = "https://api-ds.codeverse.dev.br/api/jogos";
 
-async function buscarherois() {
+async function buscarjogos() {
     
     //Mostra uma mensagem
-    resposta.textContent="Carregando heróis..."
+    resposta.textContent="Carregando jogos..."
 
     try {
         //fazer o GET
@@ -21,31 +21,32 @@ async function buscarherois() {
 
         //verificar se não deu certo
         if(!retorno.ok) {
-            throw new Error("Não foi possível carregar os heróis.");
+            throw new Error("Não foi possível carregar os jogos.");
         }
 
         //Converter o resultado para JSON, pois será um objeto.
         const resultado = await retorno.json();
 
-        //Percorrer todos os heróis que esta dentro de resultado.
-        for (const heroi of resultado.data) {
+        //Percorrer todos os jogos que esta dentro de resultado.
+        for (const jogo of resultado.data) {
             //Fazer uma copia do modelo que criamos no html
 
             const card = modelo.textContent.cloneNode(true);
 
             //Preencher cada item desse card
 
-            card.queryselector(".nome").textContent = heroi.title;
-            card.queryselector(".poder").textContent = heroi.poder;
-            card.queryselector(".universo").textContent = heroi.universo;
-            card.queryselector(".fraqueza").textContent = heroi.fraqueza;
+            card.querySelector(".nome").textContent = jogo.title;
+            card.querySelector(".genero").textContent = jogo.genero;
+            card.querySelector(".plataforma").textContent = jogo.plataforma;
+            card.querySelector(".ano-lancamento").textContent = jogo.ano-lancamento;
+            card.querySelector(".desenvolvedora").textContent = jogo.desenvolvedora;
 
-            const imagem = card.querySelector(".imagem-heroi");
+            const imagem = card.querySelector(".imagem-jogo");
 
-            if(heroi.imageUrl) {
-                imagem.src = heroi.imageUrl;
-                imagem.alt = heroi.title;
-                imagem.oneerror = () => imagem.remove
+            if(jogo.imageUrl) {
+                imagem.src = jogo.imageUrl;
+                imagem.alt = jogo.title;
+                imagem.oneerror = () => imagem.remove();
             } else {
                 imagem.remove();
             }
@@ -53,15 +54,14 @@ async function buscarherois() {
             //adiciona  o card preenchido na tela
 
             lista.appendChild(card);
-
-
+            resposta.textContent ="";
         }
     } catch (error) {
         console.error(error);
-        resposta.textContent="Não foi possivel carregar os heróis. Tente novamente!"
+        resposta.textContent="Não foi possivel carregar os jogos. Tente novamente!"
     };
     
 }
 //executar no arquivo
 
-buscarherois()
+buscarjogos();
