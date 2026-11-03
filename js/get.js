@@ -31,14 +31,14 @@ async function buscarjogos() {
         for (const jogo of resultado.data) {
             //Fazer uma copia do modelo que criamos no html
 
-            const card = modelo.textContent.cloneNode(true);
+            const card = modelo.content.cloneNode(true);
 
             //Preencher cada item desse card
 
             card.querySelector(".nome").textContent = jogo.title;
             card.querySelector(".genero").textContent = jogo.genero;
             card.querySelector(".plataforma").textContent = jogo.plataforma;
-            card.querySelector(".ano-lancamento").textContent = jogo.ano-lancamento;
+            card.querySelector(".ano_lancamento").textContent = jogo.ano_lancamento;
             card.querySelector(".desenvolvedora").textContent = jogo.desenvolvedora;
 
             const imagem = card.querySelector(".imagem-jogo");
@@ -46,7 +46,7 @@ async function buscarjogos() {
             if(jogo.imageUrl) {
                 imagem.src = jogo.imageUrl;
                 imagem.alt = jogo.title;
-                imagem.oneerror = () => imagem.remove();
+                imagem.onerror = () => imagem.remove();
             } else {
                 imagem.remove();
             }
